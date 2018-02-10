@@ -77,7 +77,11 @@ class ScreepsConsole(screepsapi.Socket):
                     else:
                         line_parsed = tagLine(line)
 
-                    print line_parsed
+                    if self.format == 'color':
+                        if '%stats' not in line_parsed:
+                            print line_parsed
+                    else:
+                        print line_parsed
                     sys.stdout.flush()
                     sleep(message_delay) # sleep for smoother scrolling
             return
